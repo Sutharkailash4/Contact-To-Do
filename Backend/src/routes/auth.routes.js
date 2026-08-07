@@ -7,6 +7,6 @@ import { identifyUser } from "../middleware/auth.middleware.js";
 authRoute.post("/register", registerController);
 authRoute.post("/login", loginController);
 authRoute.get("/getMe", identifyUser, getMeController);
-authRoute.post("/delete", identifyUser, logoutController);
+authRoute.post("/logout", identifyUser, logoutController);
 
 export default authRoute;

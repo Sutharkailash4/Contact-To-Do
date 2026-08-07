@@ -228,7 +228,22 @@ const getMeController = async (req, res) => {
 } 
 const logoutController = async (req, res) => {
     try {
-        
+
+    res.clearCookie("access_token", {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'strict'
+    });
+    
+    res.clearCookie("refresh_token", {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'strict'
+    });
+                
+        res.status(200).json({
+            message : "User logout successfully"
+        })
     } catch (error) {
         res.status(400).json({
             message : "Something went wrong",
