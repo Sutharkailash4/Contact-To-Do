@@ -129,7 +129,18 @@ const loginController = async (req, res) => {
             });
         }
 
-        
+        const isUserExists = await userModel.findOne({
+            email : email
+        });
+
+        if(!isUserExists) {
+            return res.status(400).json({
+                message : "User does not exists"
+            });
+        }
+
+        res.send(isUserExists);
+
     } catch (error) {
         res.status(400).json({
             message : "Something went wrong",
