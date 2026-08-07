@@ -203,7 +203,9 @@ const loginController = async (req, res) => {
 
 const getMeController = async (req, res) => {
     try {
-        
+        const user = req.user;
+        console.log(user);
+        res.send("OK");
     } catch (error) {
         res.status(400).json({
             message : "Something went wrong",
