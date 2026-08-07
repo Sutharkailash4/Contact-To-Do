@@ -203,9 +203,22 @@ const loginController = async (req, res) => {
 
 const getMeController = async (req, res) => {
     try {
-        const user = req.user;
-        console.log(user);
-        res.send("OK");
+        const {id} = req.user;
+
+        const user = await userModel.findById(id);
+
+        if(!user) {
+            return res.status(404).json({
+                message : "Incvalid credentials"
+            });
+        }
+
+        res.status(200).json({
+            message : "User fetched successfully",
+            id : user._id,
+            username : user.username,
+            email : user.email
+        });
     } catch (error) {
         res.status(400).json({
             message : "Something went wrong",
@@ -215,7 +228,7 @@ const getMeController = async (req, res) => {
 } 
 const logoutController = async (req, res) => {
     try {
-
+        
     } catch (error) {
         res.status(400).json({
             message : "Something went wrong",
