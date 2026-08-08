@@ -10,11 +10,51 @@ const createTaskController = async (req, res) => {
             })
         }
 
-        const user = req.user;
+        if(!firstName.trim()) {
+            return res.status(400).json({
+                message : "Fisrt Nmae is required"
+            })
+        }
 
-        console.log(user);
+        if(!lastName.trim()) {
+            return res.status(400).json({
+                message : "Last Name is required"
+            })
+        }
 
-        res.send("Ok");
+        if(!email.trim()) {
+            return res.status(400).json({
+                message : "Email is required"
+            })
+        }
+
+        if(phoneNumber.length === 0) {
+            return res.status(400).json({
+                message : "Phone Numner is required"
+            })
+        }
+
+        if(!address.trim()) {
+            return res.status(400).json({
+                message : "Address is required"
+            })
+        }
+
+        const {id} = req.user;
+
+        const task = await taskModel.create({
+            user : id,
+            firstName : firstName,
+            lastName : lastName,
+            email : email,
+            phoneNumber : phoneNumber,
+            address : address
+        });
+
+        res.status(201).json({
+            message : "Task created successfully",
+            task
+        })
     } catch (error) {   
         res.status(400).json({
             message : "Something went wrong",
