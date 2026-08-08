@@ -4,8 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="dashboard.css">
-    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="global.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
   </head>
-  <body></body>
+  <body>
+    <main>
+      <div class="dashboard-container">
+        <div class="dashboard-header">
+          <h2>Users</h2>
+          <button class="add-contact-btn">Add New Contact</button>
+        </div>
+        <div class="contact-table-box">
+          <table>
+            <thead>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Actions</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Kailash</td>
+                <td>Kumar</td>
+                <td>Kailash@gmail.copm</td>
+                <td>9049348633</td>
+                <td class="action-box">
+                  <i class="ri-eye-fill eye"></i>
+                  <i class="ri-pencil-line pencil"></i>
+                  <i class="ri-delete-bin-7-fill delete"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="dashboard.js"></script>
+  </body>
 </html>

@@ -1,0 +1,80 @@
+main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    border: 1px solid black;
+    box-shadow: 0 0 10px green;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+table th,
+td {
+    border: 1px solid black;
+    padding: 10px;
+    width: 200px;
+}
+
+.dashboard-container {
+    width: 1000px;
+    padding: 20px;
+}
+
+.dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px green;
+}
+
+.dashboard-header h2 {
+    font-size: 35px;
+}
+
+.dashboard-header button {
+    background-color: rgb(47, 129, 47);
+    padding: 10px 20px;
+    color: white;
+    font-size: 18px;
+}
+
+.contact-table-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.action-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.action-box i{
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.eye:hover{
+    background-color: skyblue;
+}
+
+.delete:hover{
+    background-color: red;
+    color: white;
+}
+
+.pencil:hover{
+    background-color: aquamarine;
+}
