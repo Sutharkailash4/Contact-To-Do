@@ -1,9 +1,9 @@
-import {body, validationresult} from "express-validator";
+import {body, validationResult} from "express-validator";
 
 // Helper middleware to catch validation errors and respond early
 
 const validateResult = (req, res, next) => {
-    const errors = validationresult(req);
+    const errors = validationResult(req);
     if(!errors.isEmpty()) {
         return res.status(400).json({
             message : "Validation failed",
@@ -21,21 +21,21 @@ const validateResult = (req, res, next) => {
 const registerValidation = [
     body("username")
     .trim()
-    .isEmpty()
+    .notEmpty()
     .withMessage("Username is required")
     .isLength({min : 6})
-    .withMessage("Username must be at least 3 characters long"),
+    .withMessage("Username must be at least 6 characters long"),
 
     body("email")
     .trim()
-    .isEmpty()
-    .withMessage("Email is reqired")
+    .notEmpty()
+    .withMessage("Email is required")
     .isEmail()
     .withMessage("Please provide a valid email address"),
 
-    body("passowrd")
+    body("password")
     .trim()
-    .isEmpty()
+    .notEmpty()
     .withMessage("Password is required")
     .isLength({min : 8})
     .withMessage("Password must be at least 8 characters long"),
@@ -48,14 +48,14 @@ const registerValidation = [
 const loginValidation = [
     body("email")
     .trim()
-    .isEmpty()
+    .notEmpty()
     .withMessage("Email is required")
     .isEmail()
     .withMessage("Please provide a valid email address"),
 
     body("password")
     .trim()
-    .isEmpty()
+    .notEmpty()
     .withMessage("Password is required")
     .isLength({min : 8})
     .withMessage("Password must be at least 8 characters long"),
