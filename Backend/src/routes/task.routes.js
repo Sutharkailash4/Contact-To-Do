@@ -6,6 +6,6 @@ import { identifyUser } from "../middleware/auth.middleware.js";
 
 taskRoute.post("/createTask", identifyUser, createTaskController);
 taskRoute.get("/getAllTask", identifyUser, getAllTaskController);
-taskRoute.post("/delete", deleteTaskController);
+taskRoute.delete("/deleteTask/:taskId", identifyUser, deleteTaskController);
 
 export default taskRoute;

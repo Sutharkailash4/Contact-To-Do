@@ -90,6 +90,21 @@ const getAllTaskController = async (req, res) => {
 const deleteTaskController = async (req, res) => {
     try {
 
+        const {id} = req.user;
+
+        const {taskId} = req.params;
+
+        if(!taskId) {
+            return res.status(400).json({
+                message : "Task not exists"
+            });
+        }
+
+        const deleteTask = await taskModel.findByIdAndDelete(taskId);
+
+        res.status(201).json({
+            message : "Task delete successfully",
+        })
     } catch (error) {
         res.status(400).json({
             message : "Something went wrong",
