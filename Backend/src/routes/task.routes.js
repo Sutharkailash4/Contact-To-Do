@@ -5,7 +5,7 @@ import { createTaskController, getAllTaskController, deleteTaskController } from
 import { identifyUser } from "../middleware/auth.middleware.js";
 
 taskRoute.post("/createTask", identifyUser, createTaskController);
-taskRoute.get("/getAllTask", getAllTaskController);
+taskRoute.get("/getAllTask", identifyUser, getAllTaskController);
 taskRoute.post("/delete", deleteTaskController);
 
 export default taskRoute;

@@ -65,7 +65,20 @@ const createTaskController = async (req, res) => {
 
 const getAllTaskController = async (req, res) => {
     try {
+        const {id} = req.user;
 
+        const allTasks = await taskModel.find({user : id});
+
+        if(allTasks.length == 0) {
+            return res.status(404).json({
+                message : "No task found"
+            })
+        }
+
+        res.status(200).json({
+            message : "Tasks fetched successfully",
+            allTasks
+        })
     } catch (error) {
         res.status(400).json({
             message : "Something went wrong",
