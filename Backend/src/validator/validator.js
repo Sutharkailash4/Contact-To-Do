@@ -23,8 +23,8 @@ const registerValidation = [
     .trim()
     .notEmpty()
     .withMessage("Username is required")
-    .isLength({min : 6})
-    .withMessage("Username must be at least 6 characters long"),
+    .isLength({min : 3})
+    .withMessage("Username must be at least 3 characters long"),
 
     body("email")
     .trim()
