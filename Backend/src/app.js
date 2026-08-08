@@ -3,8 +3,11 @@ import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import authRoute from "./routes/auth.routes.js";
 import taskRoute from "./routes/task.routes.js";
+import cors from "cors";
 
 const app = express();
+
+app.use(cors())
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
