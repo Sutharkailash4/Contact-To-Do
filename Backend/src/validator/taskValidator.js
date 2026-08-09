@@ -38,7 +38,6 @@ const taskValidation = [
     .normalizeEmail(),
 
   body("phoneNumber")
-    .trim()
     .notEmpty()
     .withMessage("Phone number is required")
     .isMobilePhone("any") 
