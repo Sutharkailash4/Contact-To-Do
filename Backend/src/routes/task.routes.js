@@ -1,5 +1,5 @@
 import express from "express";
-const taskRoute = express();
+const taskRoute = express.Router();
 
 import { createTaskController, getAllTaskController, getTaskByIdController, updateTaskController, deleteTaskController } from "../controllers/task.controller.js";
 import { identifyUser } from "../middleware/auth.middleware.js";
