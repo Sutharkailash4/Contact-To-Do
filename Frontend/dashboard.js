@@ -80,6 +80,10 @@ const renderTasks = (tasks) => {
 const getAllTask = async () => {
   try {
     const response = await getAllTaskApi();
+    if (response.message === "Authentication required" || response.message === "Invalid or expired token") {
+      window.location.href = "login.html";
+      return;
+    }
     renderTasks(response.allTasks || []);
   } catch (error) {
     console.log(error.message);

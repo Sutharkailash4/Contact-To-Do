@@ -1,4 +1,4 @@
-const fisrt_name = document.querySelector("#first-name");
+const first_name = document.querySelector("#first-name");
 const last_name = document.querySelector("#last-name");
 const email = document.querySelector("#email");
 const phone_number = document.querySelector("#number");
@@ -17,48 +17,54 @@ cancel_btn.addEventListener("click", (e) => {
 add_contact_btn.addEventListener("click", async (e) => {
     e.preventDefault();
 
-    if(!fisrt_name.value.trim() && !last_name.value.trim() && !email.value.trim() && !phone_number.value && !address.value.trim()) {
+    if (
+        !first_name.value.trim() &&
+        !last_name.value.trim() &&
+        !email.value.trim() &&
+        !phone_number.value &&
+        !address.value.trim()
+    ) {
         return alert("Enter All Details");
     }
 
-    if(!fisrt_name.value.trim()) {
-        return alert("Fisrt Name is required");
+    if (!first_name.value.trim()) {
+        return alert("First Name is required");
     }
 
-    if(!last_name.value.trim()) {
+    if (!last_name.value.trim()) {
         return alert("Last Name is required");
     }
 
-    if(!email.value.trim()) {
+    if (!email.value.trim()) {
         return alert("Email is required");
     }
 
-    if(!phone_number.value) {
+    if (!phone_number.value) {
         return alert("Phone Number is required");
     }
 
-    if(!address.value.trim()) {
+    if (!address.value.trim()) {
         return alert("Address is required");
     }
 
-    if(fisrt_name.value.length < 3) {
+    if (first_name.value.trim().length < 3) {
         return alert("First Name must be at least 3 characters");
     }
 
-    if(last_name.value.length < 3) {
+    if (last_name.value.trim().length < 3) {
         return alert("Last Name must be at least 3 characters");
     }
 
-    if(phone_number.value.length < 10 || phone_number.value.length > 10) {
-        return alert("Please provide valid phone number");
-    } 
+    if (String(phone_number.value).length !== 10) {
+        return alert("Please provide valid 10-digit phone number");
+    }
 
     const contactData = {
-        firstName: fisrt_name.value,
-        lastName: last_name.value,
-        email: email.value,
+        firstName: first_name.value.trim(),
+        lastName: last_name.value.trim(),
+        email: email.value.trim(),
         phoneNumber: +phone_number.value,
-        address: address.value
+        address: address.value.trim()
     };
 
     console.log(contactData);

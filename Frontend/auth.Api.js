@@ -1,22 +1,19 @@
 const baseURL = "http://localhost:3000/api/auth";    
 
-const registerApi = async ({username, email, password}) => {
+const registerApi = async ({ username, email, password }) => {
     try {
-
-      const response = await fetch(`${baseURL}/register`,{
-            method : "POST",
+        const response = await fetch(`${baseURL}/register`, {
+            method: "POST",
             credentials: "include",
-            headers : {
+            headers: {
                 "Content-Type": "application/json",
             },
-           body: JSON.stringify({ username, email, password }),
-      });
+            body: JSON.stringify({ username, email, password }),
+        });
 
-    const data = await response.json();
-
-    console.log(data);
-
-    return data;
+        const data = await response.json();
+        console.log(data);
+        return data;
 
     } catch (error) {
         console.error("Register Error:", error.message);
@@ -24,46 +21,40 @@ const registerApi = async ({username, email, password}) => {
     }
 };
 
-const loginApi = async ({email, password}) => {
+const loginApi = async ({ email, password }) => {
     try {
-
-        const response = await fetch(`${baseURL}/login`,{
-            method : "POST",
+        const response = await fetch(`${baseURL}/login`, {
+            method: "POST",
             credentials: "include",
-            headers : {
+            headers: {
                 "Content-Type": "application/json",
             },
-            body : JSON.stringify({email, password}),
+            body: JSON.stringify({ email, password }),
         });
 
         const data = await response.json();
-
         console.log(data);
-        
         return data;
         
     } catch (error) {
-        console.error("Register Error:", error.message);
+        console.error("Login Error:", error.message);
         throw error;
     }
 };
 
 const getMeApi = async () => {
     try {
-
-        const response = await fetch(`${baseURL}/getMe`,{
-            method : "GET",
+        const response = await fetch(`${baseURL}/getMe`, {
+            method: "GET",
             credentials: "include",
         });
 
         const data = await response.json();
-
         console.log(data);
-
         return data;
 
     } catch (error) {
-        console.error("Register Error:", error.message);
+        console.error("GetMe Error:", error.message);
         throw error;
     }
 };
@@ -94,4 +85,4 @@ export {
     loginApi,
     getMeApi,
     logoutApi
-}
+};
