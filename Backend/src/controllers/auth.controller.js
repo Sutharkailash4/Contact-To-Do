@@ -55,14 +55,14 @@ const registerController = async (req, res) => {
 
         res.cookie("access_token", access_token, {
             httpOnly: true,
-            secure: secureCookie,
-            sameSite: secureCookie ? "strict" : "lax",
+            secure: false,
+            sameSite: "lax",
         });
 
         res.cookie("refresh_token", refresh_token, {
             httpOnly: true,
-            secure: secureCookie,
-            sameSite: secureCookie ? "strict" : "lax",
+            secure: false,
+            sameSite: "lax",
         });
 
         res.status(201).json({
@@ -131,14 +131,14 @@ const loginController = async (req, res) => {
 
         res.cookie("access_token", access_token, {
             httpOnly: true,
-            secure: secureCookie,
-            sameSite: secureCookie ? "strict" : "lax"
+            secure: false,
+            sameSite:  "lax"
         });
 
         res.cookie("refresh_token", refresh_token, {
             httpOnly: true,
-            secure: secureCookie,
-            sameSite: secureCookie ? "strict" : "lax"
+            secure: false,
+            sameSite:  "lax"
         });
 
         res.status(200).json({
