@@ -52,29 +52,65 @@ td {
     justify-content: center;
 }
 
-.action-box{
+.action-box {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
 }
 
-.action-box i{
+.action-box i {
     cursor: pointer;
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 5px;
 }
 
-.eye:hover{
+.eye:hover {
     background-color: skyblue;
 }
 
-.delete:hover{
+.delete:hover {
     background-color: red;
     color: white;
 }
 
-.pencil:hover{
+.pencil:hover {
     background-color: aquamarine;
+}
+
+nav {
+    width: 100%;
+    height: 70px;
+    box-shadow: 0 0 10px lightskyblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    text-decoration: none;
+}
+
+ul li{
+    list-style: none;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+ul li:hover{
+    background-color: aqua;
+    transition: all ease-in-out 0.2s;
+}
+
+.logout-list:hover{
+    background-color: red;
+    color: white;
 }

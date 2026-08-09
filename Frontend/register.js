@@ -56,7 +56,7 @@ submit_button.addEventListener("click", async (e) => {
     email.value = "";
     confirm_password.value = "";
 
-    window.location.href = "/Frontend/login.html?";
+    window.location.href = "login.html";
 
     } catch (error) {
         console.log(error.message);

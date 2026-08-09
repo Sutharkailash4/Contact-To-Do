@@ -31,7 +31,7 @@ submit_btn.addEventListener("click", async (e) => {
         email.value = "";
         password.value = "";
 
-        window.location.href = "/Frontend/dashboard.html?";
+        window.location.href = "dashboard.html";
 
     } catch (error) {
         console.log(error.message);

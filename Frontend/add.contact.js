@@ -7,15 +7,17 @@ const address = document.querySelector("#address");
 const add_contact_btn = document.querySelector(".add-contact-btn");
 const cancel_btn = document.querySelector(".cancel-btn");
 
+import { createTaskApi } from "./contact.api.js";
+
 cancel_btn.addEventListener("click", (e) => {
     e.preventDefault();
-    window.location.href = "/Frontend/dashboard.html?";
+    window.location.href = "dashboard.html";
 });
 
-add_contact_btn.addEventListener("click", (e) => {
+add_contact_btn.addEventListener("click", async (e) => {
     e.preventDefault();
 
-    if(!fisrt_name.ariaValueMax.trim() && !last_name.ariaValueMax.trim() && !email.ariaValueMax.trim() && !phone_number.value && !address.value.trim()) {
+    if(!fisrt_name.value.trim() && !last_name.value.trim() && !email.value.trim() && !phone_number.value && !address.value.trim()) {
         return alert("Enter All Details");
     }
 
@@ -39,5 +41,30 @@ add_contact_btn.addEventListener("click", (e) => {
         return alert("Address is required");
     }
 
-    
+    if(fisrt_name.value.length < 3) {
+        return alert("First Name must be at least 3 characters");
+    }
+
+    if(last_name.value.length < 3) {
+        return alert("Last Name must be at least 3 characters");
+    }
+
+    if(phone_number.value.length < 10 || phone_number.value.length > 10) {
+        return alert("Please provide valid phone number");
+    } 
+
+    const contactData = {
+        firstName: fisrt_name.value,
+        lastName: last_name.value,
+        email: email.value,
+        phoneNumber: +phone_number.value,
+        address: address.value
+    };
+
+    console.log(contactData);
+
+    const task = await createTaskApi(contactData);
+    if (task?.message === "Task created successfully") {
+        window.location.href = "dashboard.html";
+    }
 });

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Contact Dashboard</title>
     <link rel="stylesheet" href="dashboard.css" />
     <link rel="stylesheet" href="global.css" />
     <link
@@ -12,31 +12,40 @@
     />
   </head>
   <body>
+    <nav>
+      <ul>
+        <li class="register-list">Register</li>
+        <li class="login-list">Login</li>
+        <li class="logout-list">Logout</li>
+      </ul>
+    </nav>
+
     <main>
       <div class="dashboard-container">
         <div class="dashboard-header">
-          <h2>Users</h2>
+          <h2>Contacts</h2>
           <button class="add-contact-btn">Add New Contact</button>
         </div>
         <div class="contact-table-box">
           <table>
             <thead>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Actions</th>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+              </tr>
             </thead>
             <tbody>
               <tr>
                 <td>Kailash</td>
                 <td>Kumar</td>
-                <td>Kailash@gmail.copm</td>
+                <td>Kailash@gmail.com</td>
                 <td>9049348633</td>
                 <td class="action-box">
-                  <i class="ri-eye-fill eye"></i>
-                  <i class="ri-pencil-line pencil"></i>
-                  <i class="ri-delete-bin-7-fill delete"></i>
+                  <button class="edit-placeholder">Edit</button>
+                  <button class="delete-placeholder">Delete</button>
                 </td>
               </tr>
             </tbody>

@@ -5,6 +5,7 @@ const registerApi = async ({username, email, password}) => {
 
       const response = await fetch(`${baseURL}/register`,{
             method : "POST",
+            credentials: "include",
             headers : {
                 "Content-Type": "application/json",
             },
@@ -14,6 +15,8 @@ const registerApi = async ({username, email, password}) => {
     const data = await response.json();
 
     console.log(data);
+
+    return data;
 
     } catch (error) {
         console.error("Register Error:", error.message);
@@ -26,6 +29,7 @@ const loginApi = async ({email, password}) => {
 
         const response = await fetch(`${baseURL}/login`,{
             method : "POST",
+            credentials: "include",
             headers : {
                 "Content-Type": "application/json",
             },
@@ -35,6 +39,8 @@ const loginApi = async ({email, password}) => {
         const data = await response.json();
 
         console.log(data);
+        
+        return data;
         
     } catch (error) {
         console.error("Register Error:", error.message);
@@ -46,12 +52,15 @@ const getMeApi = async () => {
     try {
 
         const response = await fetch(`${baseURL}/getMe`,{
-            method : "GET"
+            method : "GET",
+            credentials: "include",
         });
 
         const data = await response.json();
 
         console.log(data);
+
+        return data;
 
     } catch (error) {
         console.error("Register Error:", error.message);
@@ -63,6 +72,7 @@ const logoutApi = async () => {
     try {
         const response = await fetch(`${baseURL}/logout`, {
             method: "POST",
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json",
             },

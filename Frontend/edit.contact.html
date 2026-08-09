@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Contact</title>
+    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="add.contact.css" />
+  </head>
+  <body>
+    <main>
+      <div class="add-contact-container">
+        <form>
+          <h2>Edit Contact</h2>
+          <div class="name-box">
+            <input type="text" placeholder="First Name" id="first-name" />
+            <input type="text" placeholder="Last Name" id="last-name" />
+          </div>
+          <input type="email" placeholder="Email Address" id="email" />
+          <input type="number" placeholder="Number" id="number" />
+          <textarea
+            name="address"
+            id="address"
+            placeholder="Address"
+          ></textarea>
+          <button class="update-contact-btn">Update Contact</button>
+          <button class="cancel-btn">Cancel</button>
+        </form>
+      </div>
+    </main>
+
+    <script type="module" src="edit.contact.js"></script>
+  </body>
+</html>
