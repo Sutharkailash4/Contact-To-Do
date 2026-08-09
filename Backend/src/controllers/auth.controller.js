@@ -20,7 +20,7 @@ const registerController = async (req, res) => {
 
         if(!username.trim()) {
             return res.status(400).json({
-                messsage : "Username is required"
+                message : "Username is required"
             });
         }
 
@@ -57,12 +57,14 @@ const registerController = async (req, res) => {
             password : password_hash
         });
 
+        const secret = process.env.JWT_SECRET || "supersecret";
+
         const access_token = JWT.sign({
             id : user._id,
             username : user.username,
             email : user.email
         },
-        process.env.JWT_SECRET,
+        secret,
         {
             expiresIn : "3h"
         }
@@ -73,22 +75,24 @@ const registerController = async (req, res) => {
             username : user.username,
             email : user.email
         },
-        process.env.JWT_SECRET,
+        secret,
         {
             expiresIn : "7d"
         }
     );
 
+    const secureCookie = process.env.NODE_ENV === "production";
+
     res.cookie("access_token", access_token, {
-        httpOnly : true,
-        secure : true,
-        sameSite : "strict"
+        httpOnly: true,
+        secure: secureCookie,
+        sameSite: secureCookie ? "strict" : "lax",
     });
 
     res.cookie("refresh_token", refresh_token, {
-        httpOnly : true,
-        secure : true,
-        sameSite : "strict",
+        httpOnly: true,
+        secure: secureCookie,
+        sameSite: secureCookie ? "strict" : "lax",
     });
 
     res.status(201).json({
@@ -123,14 +127,14 @@ const loginController = async (req, res) => {
         }
         
         if(!email.trim()) {
-            res.status(400).json({
-                message : "Username is required"        
+            return res.status(400).json({
+                message : "Email is required"        
             });
         }
 
         if(!password.trim()) {
-            res.status(400).json({
-                message : "Email is required"
+            return res.status(400).json({
+                message : "Password is required"
             });
         }
 
@@ -152,12 +156,14 @@ const loginController = async (req, res) => {
             })
         }
 
+        const secret = process.env.JWT_SECRET || "supersecret";
+
         const access_token = JWT.sign({
             id : user._id,
             username : user.username,
             email : user.email
         },
-        process.env.JWT_SECRET,
+        secret,
         {
             expiresIn : "3h"
         }
@@ -168,22 +174,24 @@ const loginController = async (req, res) => {
             username : user.username,
             email : user.email
         },
-        process.env.JWT_SECRET,
+        secret,
         {
             expiresIn : "7d"
         }
     );
 
+    const secureCookie = process.env.NODE_ENV === "production";
+
     res.cookie("access_token", access_token, {
-        httpOnly : true,
-        secure : true,
-        samSite : "strict"
+        httpOnly: true,
+        secure: secureCookie,
+        sameSite: secureCookie ? "strict" : "lax"
     });
 
     res.cookie("refresh_token", refresh_token, {
-        httpOnly : true,
-        secure : true,
-        sameSite : "strict"
+        httpOnly: true,
+        secure: secureCookie,
+        sameSite: secureCookie ? "strict" : "lax"
     });
 
     res.status(201).json({
@@ -209,7 +217,7 @@ const getMeController = async (req, res) => {
 
         if(!user) {
             return res.status(404).json({
-                message : "Incvalid credentials"
+                message : "Invalid credentials"
             });
         }
 
@@ -228,19 +236,20 @@ const getMeController = async (req, res) => {
 } 
 const logoutController = async (req, res) => {
     try {
+      const secureCookie = process.env.NODE_ENV === "production";
 
-    res.clearCookie("access_token", {
-      httpOnly: true,
-      secure: true,
-      sameSite: 'strict'
-    });
-    
-    res.clearCookie("refresh_token", {
-      httpOnly: true,
-      secure: true,
-      sameSite: 'strict'
-    });
-                
+      res.clearCookie("access_token", {
+        httpOnly: true,
+        secure: secureCookie,
+        sameSite: secureCookie ? 'strict' : 'lax'
+      });
+      
+      res.clearCookie("refresh_token", {
+        httpOnly: true,
+        secure: secureCookie,
+        sameSite: secureCookie ? 'strict' : 'lax'
+      });
+                  
         res.status(200).json({
             message : "User logout successfully"
         })

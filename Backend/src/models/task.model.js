@@ -26,7 +26,7 @@ const taskSchema = new mongoose.Schema({
         type : String,
         required : [true, "Address is required"]
     }
-});
+}, { timestamps: true });
 
 const taskModel = mongoose.model("Task", taskSchema);
 

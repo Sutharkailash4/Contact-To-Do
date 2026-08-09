@@ -1,12 +1,14 @@
 import express from "express";
 const taskRoute = express();
 
-import { createTaskController, getAllTaskController, deleteTaskController } from "../controllers/task.controller.js";
+import { createTaskController, getAllTaskController, getTaskByIdController, updateTaskController, deleteTaskController } from "../controllers/task.controller.js";
 import { identifyUser } from "../middleware/auth.middleware.js";
 import { taskValidation } from "../validator/taskValidator.js";
 
-taskRoute.post("/createTask", taskValidation, identifyUser, createTaskController);
-taskRoute.get("/getAllTask", identifyUser, getAllTaskController);
+taskRoute.post("/createTask", identifyUser, taskValidation, createTaskController);
+taskRoute.get("/getAllTasks", identifyUser, getAllTaskController);
+taskRoute.get("/getTask/:taskId", identifyUser, getTaskByIdController);
+taskRoute.put("/updateTask/:taskId", identifyUser, taskValidation, updateTaskController);
 taskRoute.delete("/deleteTask/:taskId", identifyUser, deleteTaskController);
 
 export default taskRoute;
